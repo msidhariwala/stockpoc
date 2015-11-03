@@ -6,6 +6,7 @@ public class TestLink {
 
 	public static void main(String args[]) throws Exception {
 
+		System.out.println("check");
 		ArrayList<String> ticker=new ArrayList<String>();
 		
 		for(int i=0;i<1597;i++){
