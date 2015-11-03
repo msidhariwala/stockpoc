@@ -12,7 +12,7 @@ public class LinkGenerator {
 		sb.append("http://finance.google.com/finance/info?client=ig&q=NSE:");
 
 		int ticker_counter = 0;
-		int round_counter = 1;
+		int round_counter = 0;
 
 		int round = inputTickerArray.size() / batchSize;
 
