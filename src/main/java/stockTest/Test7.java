@@ -1,19 +1,23 @@
-package mock1;
+package stockTest;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
+import java.net.URLEncoder;
 
 import org.apache.http.HttpResponse;
 import org.apache.http.client.HttpClient;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-public class ServiceRequest {
+public class Test7 {
 
-	public static String get(String url) throws Exception {
-
+	public static void main(String[] args) throws Exception{
+		// TODO Auto-generated method stub
+		
+		String str = "http://finance.google.com/finance/info?client=ig&q=NSE:"+URLEncoder.encode("APOLSINHOT", "UTF-8");
+		
 		HttpClient client = HttpClientBuilder.create().build();
-		HttpGet request = new HttpGet(url);
+		HttpGet request = new HttpGet(str);
 
 		
 		
@@ -27,7 +31,7 @@ public class ServiceRequest {
 			result.append(line);
 		}
 
-		return result.toString().substring(3);
+		System.out.println(result);
 	}
 
 }

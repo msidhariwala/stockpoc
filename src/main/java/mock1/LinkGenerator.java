@@ -1,10 +1,11 @@
 package mock1;
 
+import java.net.URLEncoder;
 import java.util.ArrayList;
 
 public class LinkGenerator {
 
-	public static ArrayList<String> getLink(ArrayList<String> inputTickerArray, int batchSize) {
+	public static ArrayList<String> getLink(ArrayList<String> inputTickerArray, int batchSize) throws Exception{
 
 		ArrayList<String> output_link = new ArrayList<String>();
 
@@ -19,7 +20,7 @@ public class LinkGenerator {
 		for (String ticker : inputTickerArray) {
 
 			if (ticker_counter < batchSize && round_counter != round) {
-				sb.append(ticker + ",");
+				sb.append(URLEncoder.encode(ticker, "UTF-8") + ",");
 				ticker_counter++;
 			} else if (round_counter != round) {
 				ticker_counter=1;
@@ -27,11 +28,11 @@ public class LinkGenerator {
 				output_link.add(removeLastChar(sb.toString()));
 				sb.setLength(0);
 				sb.append("http://finance.google.com/finance/info?client=ig&q=NSE:");
-				sb.append(ticker + ",");
+				sb.append(URLEncoder.encode(ticker, "UTF-8") + ",");
 			}
 
 			if (round_counter == round) {
-				sb.append(ticker + ",");
+				sb.append(URLEncoder.encode(ticker, "UTF-8") + ",");
 			}
 
 		}
